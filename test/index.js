@@ -44,3 +44,12 @@ quadrant.each(function(err, lat, long, el) {
     if (latDiff < .0004 && longDiff < .0004)
         console.log('Height using quadrant.each: ' + el + ' -- diffs ' + latDiff + ' ' + longDiff);
 });
+
+var nonExistingQuadrant = new loc.Quadrant({
+    filename: path.join(__dirname, './N99W999.hgt')
+});
+
+nonExistingQuadrant.load(function(err, matrix) {
+    if (err)
+        console.error(err);
+});
